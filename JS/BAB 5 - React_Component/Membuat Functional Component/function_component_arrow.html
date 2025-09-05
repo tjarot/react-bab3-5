@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React Component Example</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .card {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 400px;
+    }
+    h1 {
+      color: #333;
+      font-size: 1.6rem;
+    }
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+      margin: 1.5rem 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- React & ReactDOM -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <!-- Babel untuk JSX -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    // Komponen dengan Arrow Function
+    const JudulReact = () => <h1>Sedang Belajar React</h1>;
+    const JudulJavaScript = () => <h1>Sedang Belajar JavaScript</h1>;
+
+    // Komponen utama
+    const MyComponent = () => {
+      return (
+        <div className="card">
+          <JudulReact />
+          <hr />
+          <JudulJavaScript />
+        </div>
+      );
+    };
+
+    // Render ke root
+    ReactDOM.render(<MyComponent />, document.getElementById('root'));
+  </script>
+</body>
+</html>

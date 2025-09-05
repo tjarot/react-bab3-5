@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>React Component</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      width: 400px;
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .card h1 {
+      margin: 0.5rem 0;
+      color: #333;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background: #764ba2;
+      margin: 1rem 0;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- React & ReactDOM -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <!-- Babel untuk JSX -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    class JudulReact extends React.Component {
+      render() {
+        return <h1>Sedang Belajar React</h1>;
+      }
+    }
+
+    class JudulJavaScript extends React.Component {
+      render() {
+        return <h1>Sedang Belajar JavaScript</h1>;
+      }
+    }
+
+    class MyComponent extends React.Component {
+      render() {
+        return (
+          <div className="card">
+            <JudulReact />
+            <hr />
+            <JudulJavaScript />
+          </div>
+        );
+      }
+    }
+
+    ReactDOM.render(<MyComponent />, document.getElementById("root"));
+  </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React Conditional Ternary</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f4f8;
+    }
+
+    h1 {
+      padding: 20px 40px;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      color: #4a148c;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- React & ReactDOM -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+
+  <!-- Babel -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- JSX -->
+  <script type="text/babel">
+    // Variabel 'nilai' menyimpan nilai yang ingin dicek
+let nilai = 80;
+
+// JSX dengan operator ternary untuk menentukan pesan
+// Jika nilai > 70, tampilkan "Selamat, anda lolos"
+// Jika nilai <= 70, tampilkan "Maaf, silahkan coba lagi"
+const myElement = (
+  <h1>
+    {(nilai > 70) ? "Selamat, anda lolos 🎉" : "Maaf, silahkan coba lagi 😔"}
+  </h1>
+);
+
+// Render elemen JSX ke dalam div dengan id="root"
+ReactDOM.render(myElement, document.getElementById('root'));
+
+  </script>
+</body>
+</html>

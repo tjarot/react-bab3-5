@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React Interaktif - Cek Nilai</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f4f8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      color: #4a148c;
+      margin-bottom: 20px;
+    }
+
+    .card {
+      background-color: #fff;
+      padding: 20px 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-top: 20px;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background-color: #6a1b9a;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    button:hover {
+      background-color: #4a148c;
+    }
+
+    .result {
+      font-weight: bold;
+      color: #6a1b9a;
+      margin-top: 10px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Input Nilai Kamu</h1>
+
+  <div id="root"></div>
+
+  <!-- React & ReactDOM -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+
+  <!-- Babel -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- JSX -->
+  <script type="text/babel">
+// Fungsi komponen React untuk mengecek nilai
+function NilaiChecker() {
+  // State untuk menyimpan nilai input dari user
+  const [nilai, setNilai] = React.useState('');
+
+  // State untuk menyimpan pesan hasil cek nilai
+  const [pesan, setPesan] = React.useState('');
+
+  // Fungsi untuk mengecek nilai saat tombol diklik
+  const cekNilai = () => {
+    if (nilai === '') {                     // Jika input kosong
+      setPesan("Masukkan nilai dulu!");
+    } else if (nilai > 70) {               // Jika nilai lebih dari 70
+      setPesan("Selamat, anda lolos 🎉");
+    } else {                               // Jika nilai 70 atau kurang
+      setPesan("Maaf, silahkan coba lagi 😔");
+    }
+  };
+
+  // JSX untuk tampilan komponen
+  return (
+    <div className="card">
+      <label htmlFor="nilaiInput">Masukkan Nilai:</label>
+      
+      {/* Input field untuk nilai */}
+      <input 
+        id="nilaiInput"
+        type="number" 
+        value={nilai}                    // Mengikat state nilai
+        onChange={(e) => setNilai(e.target.value)} // Update state saat user mengetik
+        placeholder="Misal: 80"
+      />
+
+      {/* Tombol untuk mengecek nilai */}
+      <button onClick={cekNilai}>Cek Nilai</button>
+
+      {/* Menampilkan pesan hasil jika ada */}
+      {pesan && <div className="result">{pesan}</div>}
+    </div>
+  );
+}
+
+// Render komponen NilaiChecker ke dalam div dengan id="root"
+ReactDOM.render(<NilaiChecker />, document.getElementById('root'));
+
+  </script>
+</body>
+</html>
+

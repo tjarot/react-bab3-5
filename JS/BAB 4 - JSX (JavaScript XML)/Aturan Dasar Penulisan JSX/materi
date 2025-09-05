@@ -1,0 +1,39 @@
+JSX bukanlah sebuah string sehingga jangan tambah tanda kutip di awal dan di akhir:
+const myElement = "<h1 id='judul'>Hello React</h1>"; // salah
+const myElement = <h1 id='judul'>Hello React</h1>; // benar
+
+Jika kode JSX lebih dari 1 baris, tempatkan di dalam tanda kurung " ( ) ":
+// ini akan error
+const myElement =
+<ul>
+<li><a href="https://id.wikipedia.org/wiki/Espresoa">Espresso</a></li>
+<li><a href="https://id.wikipedia.org/wiki/Kapucinoa">Cappuccino</a></li>
+<li><a href="https://id.wikipedia.org/wiki/Mokaa">Moccacino</a></li>
+</ul>
+// benar
+const myElement = (
+<ul>
+<li><a href="https://id.wikipedia.org/wiki/Espresoa">Espresso</a></li>
+<li><a href="https://id.wikipedia.org/wiki/Kapucinoa">Cappuccino</a></li>
+<li><a href="https://id.wikipedia.org/wiki/Mokaa">Moccacino</a></li>
+</ul>
+)
+
+tag harus memiliki pasangan (< />)
+
+Blok JSX hanya bisa memiliki 1 tag terluar (1 root element atau 1 top element). Jika ada 2 tag yang
+saling berdampingan, hasilnya akan error:
+// hanya bisa 1 root element, ini akan error
+const myElement = (
+<p>Belajar JavaScript</p>
+<p>Belajar React</p>
+);
+
+Solusi yang paling mudah adalah dengan menambah satu tag <div> sebagai root atau
+"container" JSX (bisa juga tag lain) :
+const myElement = (
+<div>
+<p>Belajar JavaScript</p>
+<p>Belajar React</p>
+</div>
+);

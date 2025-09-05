@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daftar Kopi Interaktif</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f4f8;
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .card {
+      background-color: #fff;
+      padding: 20px 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #6a1b9a;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 15px;
+      margin: 8px 0;
+      background-color: #fdfdfd;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    input[type="text"] {
+      width: 70%;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-right: 10px;
+    }
+
+    button {
+      padding: 8px 12px;
+      border: none;
+      border-radius: 8px;
+      background-color: #6a1b9a;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    button:hover {
+      background-color: #4a148c;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- React & ReactDOM -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+
+  <!-- Babel -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    function KopiApp() {
+      const [kopis, setKopis] = React.useState(["Espresso", "Cappuccino", "Moccacino"]);
+      const [newKopi, setNewKopi] = React.useState("");
+
+      // Menambahkan kopi baru
+      const addKopi = () => {
+        if(newKopi.trim() !== "") {
+          setKopis([...kopis, newKopi]);
+          setNewKopi("");
+        }
+      };
+
+      // Menghapus kopi berdasarkan index
+      const removeKopi = (index) => {
+        const updatedKopis = kopis.filter((_, i) => i !== index);
+        setKopis(updatedKopis);
+      };
+
+      return (
+        <div className="card">
+          <h1>Daftar Kopi</h1>
+          <div style={{ display: 'flex', marginBottom: '15px' }}>
+            <input 
+              type="text" 
+              placeholder="Masukkan nama kopi" 
+              value={newKopi} 
+              onChange={(e) => setNewKopi(e.target.value)}
+            />
+            <button onClick={addKopi}>Tambah</button>
+          </div>
+          <ul>
+            {kopis.map((kopi, index) => (
+              <li key={index}>
+                {kopi}
+                <button onClick={() => removeKopi(index)}>Hapus</button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      );
+    }
+
+    ReactDOM.render(<KopiApp />, document.getElementById('root'));
+  </script>
+</body>
+</html>

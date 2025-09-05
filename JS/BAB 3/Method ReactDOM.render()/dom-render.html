@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <!-- Supaya tampilan menyesuaikan layar perangkat -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React Uncover</title>
+
+  <!-- <script src="http://localhost:8097"></script> -->
+
+  <style>
+    /* Style untuk elemen dengan id "judul" */
+    #judul {
+      color: blueviolet;
+      text-shadow: 1px 1px 2px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <!-- Judul HTML biasa -->
+  <h1>Belajar React</h1>
+
+  <!-- Tempat elemen React akan dirender -->
+  <div id="root"></div>
+
+  <!-- React dan ReactDOM via CDN agar tidak error 404 -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+
+  <script>
+    // Membuat elemen React: <h1 id="judul">Hello React</h1>
+    const myElement = React.createElement('h1', { id: 'judul' }, 'Hello React');
+
+    // Menampilkan elemen React ke dalam div dengan id="root"
+    ReactDOM.render(myElement, document.getElementById('root'));
+  </script>
+</body>
+</html>

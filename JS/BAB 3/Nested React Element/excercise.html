@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Belajar React</title>
+</head>
+<body>
+  <h1>Menu Kopi Favorit</h1>
+
+  <!-- Container React -->
+  <div id="root"></div>
+
+  <!-- React & ReactDOM via CDN -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+
+  <script>
+    // Membuat list menu kopi
+    const myMenu = React.createElement(
+      'ul', 
+      {}, // props kosong untuk <ul>
+      [
+        React.createElement(
+          'li', 
+          { key: 'a' }, 
+          React.createElement(
+            'a', 
+            { href: 'https://id.wikipedia.org/wiki/Espresoa', target: '_blank' }, 
+            'Espresso'
+          )
+        ),
+        React.createElement(
+          'li', 
+          { key: 'b' },
+          React.createElement(
+            'a',
+            { href: 'https://id.wikipedia.org/wiki/Kapucinoa', target: '_blank' },
+            'Cappuccino'
+          )
+        ),
+        React.createElement(
+          'li',
+          { key: 'c' },
+          React.createElement(
+            'a',
+            { href: 'https://id.wikipedia.org/wiki/Mokaa', target: '_blank' },
+            'Moccacino'
+          )
+        )
+      ]
+    );
+
+    // Render list ke dalam div#root
+    ReactDOM.render(myMenu, document.getElementById('root'));
+  </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Belajar React Variabel & Ekspresi</title>
+</head>
+<body>
+  <h1>Contoh JSX dengan Variabel & Ekspresi</h1>
+
+  <!-- Container React -->
+  <div id="root"></div>
+
+  <!-- React & ReactDOM -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+
+  <!-- Babel CDN untuk mendukung JSX -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- Kode JSX -->
+  <script type="text/babel">
+    // Variabel teks
+    let myText = "Belajar React";
+
+    // JSX dengan variabel, ekspresi matematika, dan atribut dinamis
+    const myElement = (
+      <div>
+        <h1>{myText}</h1>
+        <p>10 + 5 = {10 + 5}</p>
+        <span title={myText}>React Uncover</span>
+      </div>
+    );
+
+    // Render JSX ke div#root
+    ReactDOM.render(myElement, document.getElementById('root'));
+  </script>
+</body>
+</html>

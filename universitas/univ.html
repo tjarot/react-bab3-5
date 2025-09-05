@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daftar Mahasiswa per Jurusan</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #3E0703, #660B05);
+      color: #fff;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 2rem 0 1rem;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    }
+
+    .buttons-container {
+      position: sticky;
+      top: 0;
+      background: #8C1007;
+      padding: 1rem 0;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      z-index: 10;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .buttons-container button {
+      padding: 0.7rem 1.2rem;
+      border-radius: 10px;
+      border: none;
+      background: #FFF0C4;
+      color: #3E0703;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .buttons-container button:hover {
+      background: #660B05;
+      color: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+    }
+
+    .buttons-container button.active {
+      background: #ffb347;
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .card {
+      background: #FFF0C4;
+      color: #3E0703;
+      padding: 1.5rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+    }
+
+    .card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 3px solid #660B05;
+      transition: transform 0.3s;
+    }
+
+    .card img:hover {
+      transform: scale(1.1);
+    }
+
+    figcaption {
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <h1>Daftar Mahasiswa per Jurusan</h1>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    const jurusanList = [
+      "Teknik Informatika",
+      "Rekayasa Perangkat Lunak",
+      "Teknik Elektro",
+      "Desain Komunikasi Visual",
+      "Multimedia",
+      "Akuntansi"
+    ];
+
+    const mahasiswas = [
+      {id: "01", nama: "Bima Prasetya", jurusan: "Rekayasa Perangkat Lunak", pasFoto: "people.1.jpg"},
+      {id: "02", nama: "Amelia Saraswati", jurusan: "Rekayasa Perangkat Lunak", pasFoto: "people1.jpg"},
+      {id: "03", nama: "Fauzan Ardiansyah", jurusan: "Teknik Elektro", pasFoto: "people.2.jpg"},
+      {id: "04", nama: "Cynthia Maharani", jurusan: "Desain Komunikasi Visual", pasFoto: "people2.jpg"},
+      {id: "05", nama: "Rangga Putra", jurusan: "Multimedia", pasFoto: "people.3.jpg"},
+      {id: "06", nama: "Dewi Lestari", jurusan: "Multimedia", pasFoto: "people3.jpg"},
+      {id: "07", nama: "Aditya Nugroho", jurusan: "Akuntansi", pasFoto: "people.4.jpg"},
+      {id: "08", nama: "Risa Anggrain", jurusan: "Akuntansi", pasFoto: "people4.jpg"},
+      {id: "09", nama: "Galih Ramadhan", jurusan: "Teknik Informatika", pasFoto: "people.5.jpg"},
+      {id: "10", nama: "Maya Fitrian", jurusan: "Teknik Informatika", pasFoto: "people5.jpg"}
+    ];
+
+    const MahasiswaCard = ({data}) => (
+      <figure className="card">
+        <img src={"img/" + data.pasFoto} alt={data.nama} />
+        <figcaption>{data.nama} ({data.jurusan})</figcaption>
+      </figure>
+    );
+
+    const App = () => {
+      const [selectedJurusan, setSelectedJurusan] = React.useState(null);
+
+      const filtered = selectedJurusan 
+        ? mahasiswas.filter(m => m.jurusan === selectedJurusan)
+        : [];
+
+      return (
+        <React.Fragment>
+          <div className="buttons-container">
+            {jurusanList.map(j => (
+              <button 
+                key={j} 
+                className={selectedJurusan === j ? "active" : ""}
+                onClick={() => setSelectedJurusan(j)}>
+                {selectedJurusan ? j : "Pilih Jurusan"}
+              </button>
+            ))}
+          </div>
+
+          {selectedJurusan && (
+            <h2 style={{marginTop: "2rem", textAlign: "center"}}>
+              Mahasiswa Jurusan {selectedJurusan}
+            </h2>
+          )}
+
+          <div className="grid">
+            {filtered.map(m => <MahasiswaCard key={m.id} data={m} />)}
+          </div>
+        </React.Fragment>
+      );
+    };
+
+    ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
+</body>
+</html>
+

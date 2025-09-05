@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu Kopi JSX</title>
+  <style>
+    ul { list-style: none; padding: 0; }
+    li { margin: 10px 0; }
+    a { text-decoration: none; color: darkblue; font-weight: bold; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <h1>Menu Kopi Favorit</h1>
+
+  <!-- Container React -->
+  <div id="root"></div>
+
+  <!-- React & ReactDOM -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+
+  <!-- Babel untuk mendukung JSX -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- Kode JSX -->
+  <script type="text/babel">
+    const myElement = (
+      <ul>
+        <li><a href="https://id.wikipedia.org/wiki/Espreso" target="_blank">Espresso</a></li>
+        <li><a href="https://id.wikipedia.org/wiki/Kapucino" target="_blank">Cappuccino</a></li>
+        <li><a href="https://id.wikipedia.org/wiki/Moka" target="_blank">Moccacino</a></li>
+      </ul>
+    );
+
+    ReactDOM.render(myElement, document.getElementById('root'));
+  </script>
+</body>
+</html>

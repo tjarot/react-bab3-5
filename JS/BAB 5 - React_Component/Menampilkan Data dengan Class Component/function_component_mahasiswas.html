@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daftar Mahasiswa React</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    h1 {
+      color: #fff;
+      text-align: center;
+      margin-top: 1rem;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+
+    hr {
+      width: 50%;
+      border: 0;
+      height: 2px;
+      background: #fff;
+      opacity: 0.5;
+      margin-bottom: 2rem;
+    }
+
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+
+    .card {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+      text-align: center;
+      width: 250px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+    }
+
+    .card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 3px solid #667eea;
+    }
+
+    figcaption {
+      font-size: 1rem;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- React & ReactDOM -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <!-- Babel -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    const mahasiswas = [
+      {id:"01", nama: "Eka", jurusan: "Teknik Informatika", pasFoto: "people.1.jpg"},
+      {id:"02", nama: "Lisa", jurusan: "Sistem Informasi", pasFoto: "people2.jpg"},
+      {id:"03", nama: "Rudi", jurusan: "Teknik Elektro", pasFoto: "people.3.jpg"},
+      {id:"04", nama: "Cynthia", jurusan: "Desain Komunikasi Visual", pasFoto: "people4.jpg"}
+    ];
+
+    // Komponen Mahasiswa
+    const Mahasiswa = () => {
+      return (
+        <React.Fragment>
+          {mahasiswas.map(mahasiswa => (
+            <figure className="card" key={mahasiswa.id}>
+              <img src={"img/" + mahasiswa.pasFoto} alt={mahasiswa.nama} />
+              <figcaption>{mahasiswa.nama} ({mahasiswa.jurusan})</figcaption>
+            </figure>
+          ))}
+        </React.Fragment>
+      );
+    };
+
+    // Komponen utama
+    const DaftarMahasiswa = () => {
+      return (
+        <React.Fragment>
+          <h1>Daftar Mahasiswa - Universitas Ilkoom</h1>
+          <hr />
+          <section className="grid">
+            <Mahasiswa />
+          </section>
+        </React.Fragment>
+      );
+    };
+
+    ReactDOM.render(<DaftarMahasiswa />, document.getElementById('root'));
+  </script>
+</body>
+</html>

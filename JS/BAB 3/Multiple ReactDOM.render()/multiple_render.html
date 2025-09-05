@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar React</title>
+</head>
+<body>
+    <h1>Belajar React</h1>
+
+    <!-- Container untuk render teks React -->
+    <div id="raa"></div>
+    <!-- Container untuk render gambar React -->
+    <div id="titi"></div>
+
+    <!-- React & ReactDOM via CDN -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+
+    <script>
+        // Membuat elemen React <h1>Hello React</h1>
+        const myElement = React.createElement('h1', null, 'Hello React');
+        ReactDOM.render(myElement, document.getElementById('raa'));
+
+        // Membuat elemen React <img src="img/landak.jpg">
+        const myPic = React.createElement('img', { src: 'img/landak.jpg', alt: 'landak' });
+        ReactDOM.render(myPic, document.getElementById('titi'));
+    </script>
+</body>
+</html>

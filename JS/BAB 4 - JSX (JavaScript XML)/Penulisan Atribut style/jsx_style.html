@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Belajar React - Desain Keren</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f4f8;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      margin-top: 20px;
+      color: #6a1b9a;
+    }
+
+    #root {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 20px;
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .card {
+      background-color: #fff;
+      padding: 20px;
+      margin: 10px 0;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 100%;
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    p {
+      font-size: 18px;
+      color: #333;
+    }
+
+    span {
+      font-weight: bold;
+      color: #6a1b9a;
+    }
+  </style>
+</head>
+<body>
+  <h1>Belajar React - Desain Keren</h1>
+
+  <div id="root"></div>
+
+  <!-- React & ReactDOM -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  
+  <!-- Babel -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- JSX -->
+  <script type="text/babel">
+    const myElement = (
+      <div>
+        <div className="card">
+          <h2 style={{ color: 'violet' }}>Belajar React</h2>
+          <p>Ini adalah contoh card dengan React & JSX.</p>
+        </div>
+
+        <div className="card">
+          <h2 style={{ color: 'teal' }}>Ekspresi & Variabel</h2>
+          <p>10 + 5 = {10 + 5}</p>
+          <p>Variabel: <span>{"Belajar JavaScript & React"}</span></p>
+        </div>
+
+        <div className="card">
+          <h2 style={{ color: 'orange' }}>Fragment Contoh</h2>
+          <>
+            <p>Ini paragraf pertama.</p>
+            <p>Ini paragraf kedua.</p>
+          </>
+        </div>
+      </div>
+    );
+
+    ReactDOM.render(myElement, document.getElementById('root'));
+  </script>
+</body>
+</html>
+

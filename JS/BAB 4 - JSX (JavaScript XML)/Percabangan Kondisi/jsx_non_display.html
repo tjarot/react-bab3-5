@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSX Tipe Data</title>
+  <style>
+    #root div {
+      padding: 10px;
+      margin: 5px 0;
+      border: 1px solid #ccc;
+      background-color: #fdfdfd;
+      border-radius: 8px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- React & ReactDOM -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+
+  <!-- Babel -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- JSX -->
+  <script type="text/babel">
+    const myElement = (
+      <div>
+        <div />            {/* Self-closing, kosong */}
+        <div></div>        {/* Kosong */}
+        <div>{true}</div>  {/* Tidak muncul */}
+        <div>{false}</div> {/* Tidak muncul */}
+        <div>{null}</div>  {/* Tidak muncul */}
+        <div>{undefined}</div> {/* Tidak muncul */}
+      </div>
+    );
+
+    ReactDOM.render(myElement, document.getElementById('root'));
+  </script>
+</body>
+</html>

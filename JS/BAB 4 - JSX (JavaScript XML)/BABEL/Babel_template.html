@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Belajar React dengan JSX</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fdf6e3;
+      color: #333;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      color: #6b4f4f;
+      margin-bottom: 20px;
+    }
+
+    #root {
+      background: #fff8f0;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      margin: 10px 0;
+      padding: 10px 15px;
+      background: #ffe6cc;
+      border-radius: 8px;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    li:hover {
+      background: #ffd699;
+      transform: scale(1.03);
+    }
+
+    li a {
+      text-decoration: none;
+      color: #6b4f4f;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    li a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Menu Kopi Favorit</h1>
+
+  <!-- Container React -->
+  <div id="root"></div>
+
+  <!-- React & ReactDOM -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+
+  <!-- Babel untuk mendukung JSX -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- Kode React + JSX -->
+  <script type="text/babel">
+    // Data menu kopi
+    const menuItems = [
+      { name: 'Espresso', link: 'https://id.wikipedia.org/wiki/Espresoa' },
+      { name: 'Cappuccino', link: 'https://id.wikipedia.org/wiki/Kapucinoa' },
+      { name: 'Moccacino', link: 'https://id.wikipedia.org/wiki/Mokaa' }
+    ];
+
+    // Komponen React
+    function Menu() {
+      return (
+        <ul>
+          {menuItems.map((item, index) => (
+            <li key={index}>
+              <a href={item.link} target="_blank" rel="noopener noreferrer">{item.name}</a>
+            </li>
+          ))}
+        </ul>
+      );
+    }
+
+    // Render komponen Menu ke div#root
+    ReactDOM.render(<Menu />, document.getElementById('root'));
+  </script>
+</body>
+</html>

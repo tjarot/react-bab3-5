@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>List Kopi dengan React</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
+      background-color: #f0f4f8;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      width: 300px;
+    }
+
+    li {
+      padding: 10px 15px;
+      margin: 8px 0;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      font-weight: bold;
+      color: #6a1b9a;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- React & ReactDOM -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+
+  <!-- Babel -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- JSX -->
+  <script type="text/babel">
+    // Array nama kopi
+    let kopis = ["Espresso", "Cappuccino", "Moccacino"];
+
+    // Buat list dengan map(), beri key unik
+    const myElement = (
+      <ul>
+        {kopis.map((kopi, index) => <li key={index}>{kopi}</li>)}
+      </ul>
+    );
+
+    // Render list ke div#root
+    ReactDOM.render(myElement, document.getElementById('root'));
+  </script>
+</body>
+</html>
